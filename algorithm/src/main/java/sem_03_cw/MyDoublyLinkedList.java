@@ -82,4 +82,20 @@ public class MyDoublyLinkedList {
             }
         }
     }
+
+    public void revert() {
+        if (head != null && head != tail) {
+            Node currentNode = head;
+            Node tempNode = null;
+            while (currentNode != null) {
+                tempNode = currentNode.previous;
+                currentNode.previous = currentNode.next;
+                currentNode.next = tempNode;
+                currentNode = currentNode.previous;
+            }
+            tempNode = head;
+            head = tail;
+            tail = tempNode;
+        }
+    }
 }
